@@ -32,7 +32,7 @@ USE_PREFIX = "use_prefix"
 USE_SUFFIX = "use_suffix"
 UE_COMPATIBLE = "ue_compatible"
 
-def list_all_of_type(types=["mesh"]):
+def Mi_list_all_of_type(types=["mesh"]):
     """ 
     Return a list of objects of type <types>
     
@@ -51,17 +51,17 @@ def list_all_of_type(types=["mesh"]):
             object_list.append(obj)
     return object_list
 
-def list_objects_types():
+def Mi_list_objects_types():
     """ return list of available types """
     return ls(showType=True)
 
-def renamer(method=None):
+def Mi_renamer(method=None):
     """
     Run to rename ShadingGroups, Textures, and Materials
     """
     # get shading groups
     # shading_groups = filter(lambda x: True if x else False, [obj if obj.name().endswith("SG") else None for obj in list_all_of_type(shadinggroup_types)])
-    shading_groups = list_all_of_type(shadinggroup_types)
+    shading_groups = Mi_list_all_of_type(shadinggroup_types)
     
     # rename shading groups
     for shadinggroup in shading_groups:
@@ -119,13 +119,13 @@ def renamer(method=None):
         print("Rename {} to {}".format(texture.name(), new_name))
         
     # get place2dTexture
-    place2dTextures = list_all_of_type(types=["place2dTexture"])
+    place2dTextures = Mi_list_all_of_type(types=["place2dTexture"])
     for place2d_texture in place2dTextures:
         new_name = "UvCoord"
         print("Rename {} to {}".format(place2d_texture.name(), new_name))
 
 def main(method=USE_PREFIX):
-    renamer(method)
+    Mi_renamer(method)
 
 if __name__ == '__main__':
     main(method=UE_COMPATIBLE)
